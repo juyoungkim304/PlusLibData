@@ -21,18 +21,18 @@
       Type="OpticalMarkerTracker"
       CameraCalibrationFile="OpticalMarkerTracker/realsense_gen2_calibration.yml"
       ToolReferenceFrame="Tracker"
-      TrackingMethod="OPTICAL"
+      InputType="RGB_ONLY"
       MarkerDictionary="ARUCO_MIP_36h12">
       <DataSources>
-        <DataSource Type="Tool" Id="Marker0" MarkerId="0" MarkerSizeMm="80" />
-        <DataSource Type="Tool" Id="Marker1" MarkerId="1" MarkerSizeMm="80" />
-        <DataSource Type="Tool" Id="Marker2" MarkerId="2" MarkerSizeMm="50" />
-        <DataSource Type="Tool" Id="Marker3" MarkerId="3" MarkerSizeMm="50" />
-        <DataSource Type="Tool" Id="Marker4" MarkerId="4" MarkerSizeMm="50" />
-        <DataSource Type="Tool" Id="Marker5" MarkerId="5" MarkerSizeMm="30" />
-        <DataSource Type="Tool" Id="Marker6" MarkerId="6" MarkerSizeMm="30" />
-        <DataSource Type="Tool" Id="Marker7" MarkerId="7" MarkerSizeMm="30" />
-        <DataSource Type="Tool" Id="Marker8" MarkerId="8" MarkerSizeMm="30" />
+        <DataSource Type="Tool" Id="Marker0" MarkerId="0" MarkerSizeMm="80" DataFusionMethod="RGB_ONLY"/>
+        <DataSource Type="Tool" Id="Marker1" MarkerId="1" MarkerSizeMm="80" DataFusionMethod="RGB_ONLY"/>
+        <DataSource Type="Tool" Id="Marker2" MarkerId="2" MarkerSizeMm="50" DataFusionMethod="RGB_ONLY"/>
+        <DataSource Type="Tool" Id="Marker3" MarkerId="3" MarkerSizeMm="50" DataFusionMethod="RGB_ONLY"/>
+        <DataSource Type="Tool" Id="Marker4" MarkerId="4" MarkerSizeMm="50" DataFusionMethod="RGB_ONLY"/>
+        <DataSource Type="Tool" Id="Marker5" MarkerId="5" MarkerSizeMm="30" DataFusionMethod="RGB_ONLY"/>
+        <DataSource Type="Tool" Id="Marker6" MarkerId="6" MarkerSizeMm="30" DataFusionMethod="RGB_ONLY"/>
+        <DataSource Type="Tool" Id="Marker7" MarkerId="7" MarkerSizeMm="30" DataFusionMethod="RGB_ONLY"/>
+        <DataSource Type="Tool" Id="Marker8" MarkerId="8" MarkerSizeMm="30" DataFusionMethod="RGB_ONLY"/>
       </DataSources>
       <InputChannels>
         <InputChannel Id="VideoStream"  />
@@ -49,6 +49,7 @@
           <DataSource Id="Marker7"/>
           <DataSource Id="Marker8"/>
         </OutputChannel>
+        <OutputChannel Id="Optical" />
       </OutputChannels>
     </Device>
     <Device

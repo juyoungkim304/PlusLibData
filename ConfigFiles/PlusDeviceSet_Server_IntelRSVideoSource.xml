@@ -1,0 +1,36 @@
+<PlusConfiguration version="2.3">
+
+  <DataCollection StartupDelaySec="1.0" >
+    <DeviceSet 
+      Name="PlusServer: Intel RealSense camera video source"
+      Description="Broadcasting RGB video and/or depth data through OpenIGTLink." 
+    />
+    <Device
+      Id="VideoDevice"
+      Type="IntelRSVideo" >
+      <DataSources>
+        <DataSource Type="Video" Id="RGB" PortUsImageOrientation="MF" StreamType="COLOR" FrameSize="640 480" FrameRate="0" />
+        <DataSource Type="Video" Id="Depth" PortUsImageOrientation="UN" StreamType="DEPTH" FrameSize="640 480" FrameRate="0" />
+      </DataSources>      
+      <OutputChannels>
+        <OutputChannel Id="RGBStream" VideoDataSourceId="RGB" />
+        <OutputChannel Id="DepthStream" VideoDataSourceId="Depth" />
+      </OutputChannels>
+    </Device>
+  </DataCollection>
+
+  <PlusOpenIGTLinkServer 
+    MaxNumberOfIgtlMessagesToSend="1" 
+    MaxTimeSpentWithProcessingMs="50" 
+    ListeningPort="18944" 
+    OutputChannelId="RGBStream" > 
+    <DefaultClientInfo> 
+      <MessageTypes> 
+        <Message Type="IMAGE" />
+      </MessageTypes>
+      <ImageNames>
+        <Image Name="RGBImage" EmbeddedTransformToFrame="RGBImage" />
+      </ImageNames>
+    </DefaultClientInfo>
+  </PlusOpenIGTLinkServer>
+</PlusConfiguration>
