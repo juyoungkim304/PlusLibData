@@ -1,0 +1,40 @@
+<PlusConfiguration version="2.7">
+
+  <DataCollection StartupDelaySec="1.0" >
+    <DeviceSet 
+      Name="PlusServer: PicoScope P2000 series"
+      Description="Broadcasting acquired electrical signal from P2000 series oscilloscope thorugh OpenIGTLink" />
+    <Device
+      Id="ScopeDevice" 
+      Type="PicoScope"
+      ToolReferenceFrame="Scope"
+      >
+      <DataSources>
+        <!-- <DataSource Type="Video" Id="Channel0" Channel="0" VoltageRangeMV="50" Coupling="AC" /> -->
+        <DataSource Type="Tool" Id="Signal"  Channel="0" VoltageRangeMV="100" Coupling="AC"/>
+      </DataSources>
+      <OutputChannels>
+        <OutputChannel Id="DataStream">
+          <DataSource Type="Tool" Id="Signal" />
+        </OutputChannel>
+      </OutputChannels>
+    </Device>
+  </DataCollection>
+  
+  <PlusOpenIGTLinkServer
+    MaxNumberOfIgtlMessagesToSend="1"
+    MaxTimeSpentWithProcessingMs="50"
+    ListeningPort="18944"
+    SendValidTransformsOnly="TRUE"
+    OutputChannelId="DataStream" >
+    <DefaultClientInfo>
+      <MessageTypes>
+        <Message Type="TRANSFORM" />
+      </MessageTypes>
+      <TransformNames>
+        <Transform Name="SignalToScope" />
+      </TransformNames>
+    </DefaultClientInfo>
+  </PlusOpenIGTLinkServer>
+
+</PlusConfiguration>
